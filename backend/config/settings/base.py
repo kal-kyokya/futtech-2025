@@ -51,10 +51,11 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Futtech apps
-    'accounts',
-    'core',
-    'training',
-    'video',
+    # Use '<app>.apps.<AppConfigName>' large project naming convention
+    'accounts.apps.AccountsConfig',
+    'core.apps.CoreConfig',
+    'training.apps.TrainingConfig',
+    'video.apps.VideoConfig',
 ]
 
 MIDDLEWARE = [

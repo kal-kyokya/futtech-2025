@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Futtech apps
-    # Use '<app>.apps.<AppConfigName>' large project naming convention
+    # Use the '<app>.apps.<AppConfigName>' large project naming convention
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
     'training.apps.TrainingConfig',

@@ -17,7 +17,8 @@ import environ
 env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+# This goes all the way up to '~/futtech-2025'
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
 
 # Optional loading of '.env' (We will do it in 'dev/local')
 ENV_FILE = BASE_DIR / '.env'
@@ -49,13 +50,10 @@ INSTALLED_APPS = [
     # 3rd party
     'rest_framework',
     'corsheaders',
+    'djstripe',
 
     # Futtech apps
     # Use the '<app>.apps.<AppConfigName>' large project naming convention
-    'accounts.apps.AccountsConfig',
-    'core.apps.CoreConfig',
-    'training.apps.TrainingConfig',
-    'video.apps.VideoConfig',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +138,23 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Stripe API keys
+
+STRIPE_TEST_PUBLIC_KEY = env('STRIPE_TEST_PUBLIC_KEY')
+STRIPE_TEST_SECRET_KEY = env('STRIPE_TEST_SECRET_KEY')
+STRIPE_LIVE_MODE = env('STRIPE_LIVE_MODE') # True in production
+
+STRIPE_PRICING_TABLE_ID = env('STRIPE_PRICING_TABLE_ID')
+
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = 'id'
+DJSTRIPE_WEBHOOK_SECRET = env('DJSTRIPE_WEBHOOK_SECRET')
+
+# Default domain name
+
+DOMAIN_NAME = env('DOMAIN_NAME')
+
+# DRF's Authentication configuration
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

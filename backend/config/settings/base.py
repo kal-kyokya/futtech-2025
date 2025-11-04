@@ -54,6 +54,9 @@ INSTALLED_APPS = [
 
     # Futtech apps
     # Use the '<app>.apps.<AppConfigName>' large project naming convention
+    'user_auth.apps.UserAuthConfig',
+    'playlists.apps.PlaylistsConfig',
+    'video_management.apps.VideoManagementConfig',
 ]
 
 MIDDLEWARE = [
